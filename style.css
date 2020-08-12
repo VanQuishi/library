@@ -1,0 +1,12 @@
+table
+{
+    width: 80%;
+    margin: auto;
+    box-shadow: 2px 2px 12px #5a9c5a;
+}
+
+thead
+{
+    color: white;
+    background: rgb(90, 156, 90);
+}
