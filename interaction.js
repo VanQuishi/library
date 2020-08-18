@@ -1,4 +1,11 @@
 var myLibrary = [];
+const shelves = document.querySelector('.shelves');
+const newbook = document.querySelector('.newbook');
+const container = document.getElementById('container');
+const newBookForm = document.getElementById('newBookForm');
+var removeButton = document.createElement('button');
+removeButton.innerText = "Remove";
+
 
 function Book(title, author, chapters, read)
 {
@@ -16,10 +23,6 @@ function addBookToLibrary(title, author, chapters, read)
     myLibrary.push(book_obj);
 }
 
-const shelves = document.querySelector('.shelves');
-const newbook = document.querySelector('.newbook');
-const container = document.getElementById('container');
-const newBookForm = document.getElementById('newBookForm');
 
 function render()
 {
@@ -32,11 +35,13 @@ function render()
         let cell2 = row.insertCell(1);
         let cell3 = row.insertCell(2);
         let cell4 = row.insertCell(3);
+        let cell5 = row.insertCell(4);
 
         cell1.innerHTML = book.title;
         cell2.innerHTML = book.author;
         cell3.innerHTML = book.chapters;
         cell4.innerHTML = book.read;
+        cell5.appendChild(removeButton.cloneNode(true));
     }
     
     
