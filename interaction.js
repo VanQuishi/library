@@ -23,8 +23,24 @@ const newBookForm = document.getElementById('newBookForm');
 
 function render()
 {
+    if (myLibrary.length > 0)
+    {
+        var book = myLibrary[myLibrary.length - 1];
+
+        let row = shelves.insertRow();
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let cell3 = row.insertCell(2);
+        let cell4 = row.insertCell(3);
+
+        cell1.innerHTML = book.title;
+        cell2.innerHTML = book.author;
+        cell3.innerHTML = book.chapters;
+        cell4.innerHTML = book.read;
+    }
     
-    myLibrary.forEach(book =>
+    
+    /*myLibrary.forEach(book =>
     {
         let row = shelves.insertRow();
         let cell1 = row.insertCell(0);
@@ -36,7 +52,7 @@ function render()
         cell2.innerHTML = book.author;
         cell3.innerHTML = book.chapters;
         cell4.innerHTML = book.read;
-    });
+    });*/
 }
 
 
@@ -47,6 +63,8 @@ newbook.addEventListener('click', (e) =>
 
 newBookForm.addEventListener('submit', (e) =>
 {
+    e.preventDefault();  //stops the page from reloading after submitting the form
+    
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let chapters = document.getElementById('chapters').value;
@@ -54,13 +72,15 @@ newBookForm.addEventListener('submit', (e) =>
 
     addBookToLibrary(title, author, chapters, read);
 
-    //console.log(myLibrary);
-
     console.log(myLibrary.length);
 
     render();
 
     console.log('reach render()');
+
+    newBookForm.reset();  //clear out all fields in the form
+
+    newBookForm.style.display = 'none';  //make the form disappear
 });
 
 
