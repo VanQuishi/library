@@ -10,13 +10,30 @@
             <table class="shelves">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Title</th>
                         <th>Author</th>
                         <th>Pages</th>
+                        <th>Read</th>
                     </tr>
                 </thead>
                
             </table>
+
+            <form id="newBookForm">
+                <label for="title">Book's Title:</label><br>
+                <input type="text" name="title" id="title">
+                <br>
+                <label for="author">Author:</label><br>
+                <input type="text" name="author" id="author">
+                <br>
+                <label for="chapters">Number of Chapters:</label><br>
+                <input type="number" name="chapters" id="chapters">
+                <br>
+                <label>Check if you have read this book </label>
+                <input type="checkbox" id="read">
+                <br>
+                <input type="submit" value="Submit">
+            </form>
         </div>
         
 

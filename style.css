@@ -10,3 +10,8 @@ thead
     color: white;
     background: rgb(90, 156, 90);
 }
+
+#newBookForm
+{
+    display: none;
+}
