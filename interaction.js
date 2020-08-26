@@ -19,6 +19,13 @@ function Book(title, author, chapters, read)
     this.read = read;  //bool
 }
 
+Book.prototype.toggleRead = function()
+{
+    //if obj.read == true then set it to false and vice versa
+    this.read ? this.read = false : this.read = true;  
+    return this.read;
+}
+
 function addBookToLibrary(title, author, chapters, read)
 {
     //do stuff here
@@ -32,9 +39,21 @@ function render(index)
     if (myLibrary.length > 0)
     {
         var book = myLibrary[index];
+
         var removeButton = document.createElement('button');
         removeButton.innerText = "Remove";
         removeButton.id = `${index}`;
+
+        var read_check_btn = document.createElement('button');
+        if (book.read == true)
+        {
+            read_check_btn.innerText = "Unread";
+        }
+
+        else
+        {
+            read_check_btn.innerText = "Read";
+        }
 
         let row = shelves.insertRow();
         let cell1 = row.insertCell(0);
@@ -42,12 +61,14 @@ function render(index)
         let cell3 = row.insertCell(2);
         let cell4 = row.insertCell(3);
         let cell5 = row.insertCell(4);
+        let cell6 = row.insertCell(5);
 
         cell1.innerHTML = book.title;
         cell2.innerHTML = book.author;
         cell3.innerHTML = book.chapters;
         cell4.innerHTML = book.read;
         cell5.appendChild(removeButton);
+        cell6.appendChild(read_check_btn);
 
         removeButton.onclick = function()
         {
@@ -57,6 +78,17 @@ function render(index)
             myLibrary.splice(deleted_index-1,1);
             //console.log(`number of books remained: ${myLibrary.length}`);
             shelves.deleteRow(deleted_index);
+        };
+
+        read_check_btn.onclick = function()
+        {
+            //book.toggleRead;
+
+            //console.log(book.read);
+            
+            book.toggleRead() ? read_check_btn.innerText = "Unread" : read_check_btn.innerText = "Read";
+            cell4.innerHTML = book.read;
+            //console.log(book.read);
         };
     }
 }
